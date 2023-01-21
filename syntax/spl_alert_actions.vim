@@ -53,7 +53,7 @@ syn match   confAlertActions /\v<^(report(Paper(Size|Orientation)|Server(Enabled
 syn match   confAlertActions /\v<^(pdf\.(logo_path|html_image_rendering|(footer|header)_(enabled|center|left|right)))>/
 syn match   confAlertActions /\v<^(alert\.execute\.cmd(\.arg\.\d+)?|label|description)>/
 syn match   confAlertActions /\v<^(subject\.(alert|report)|message\.(report|alert)|footer\.text|include\.((results|view)_link|search|trigger|trigger_time))>/
-syn match   confAlertActions /\v<^(cipherSuite|ssl((Alt|Common)NameToCheck|VerifyServerCert|Versions))>/
+syn match   confAlertActions /\v<^(cipherSuite|ssl((Alt|Common)NameToCheck|VerifyServer(Cert|Name)|Versions))>/
 
 " 7.2.3
 syn match   confAlertActions /\v<^(forceCsvResults)>/
@@ -64,6 +64,10 @@ syn match   confAlertActions_Constants /\v<(html|plain|portrait|landscape|letter
 " 8.0.0
 syn match   confAlertActions /\v^(python\.version)>/
 syn match   confAlertActions_Constants /\v<(default|python(2|3)?)$>/
+
+" 8.1.0
+syn match   confAlertActionsStanzas contained /\v<summary_metric_index>/
+syn match   confAlertActions /\v^(allowedDomainList|escapeCSVNewline|allow_empty_attachment)>/
 
 " etc/apps/alert_logevent/README/alert_actions.conf.spec
 syn match   confAlertActionsStanzas contained /\v<logevent>/

@@ -39,30 +39,13 @@ syn match confGenericStanzas display contained /\v[^\]]+/
 syn region confStanza matchgroup=confStanzaStart start=/^\[/ matchgroup=confStanzaEnd end=/\]/ oneline transparent contains=@confStanzas
 
 " Group clusters
-syn cluster confStanzas contains=confDatamodelsStanzas,confGenericStanzas
+syn cluster confStanzas contains=confGlobalbannerStanzas,confGenericStanzas
 
-" datamodels.conf
-syn match   confDatamodelsStanzas contained /\v<(default)>/
-syn match   confDatamodels /\v<^(acceleration(\.(earliest|backfill|max)_time|\.poll_buckets_until_maxtime|\.cron_schedule|\.manual_rebuilds)?)>/
-syn match   confDatamodels /\v<^(acceleration\.(max_concurrent|schedule_priority|hunk\.(compression_codec|dfs_block_size|file_format)|allow_skew))>/
-syn match   confDatamodels /\v<^(dataset\.(description|type|commands|fields|display\.(diversity|sample_ratio|limiting|currentCommand|mode)))>/
-syn match   confDatamodels /\v<^(dataset\.display\.datasummary\.(earliest|latest)Time|tags_whitelist)>/
+" global-banner.conf
+syn match   confGlobalbannerStanzas contained /\v<(default|BANNER_MESSAGE_SINGLETON)>/
+syn match   confGlobalbanner /\v<^(global_banner\.(visible|message|background_color|hyperlink(_text)?))>/
 
-" 7.2.3
-syn match   confDatamodels /\v<^(acceleration\.allow_old_summaries)>/
-
-syn match   confDatamodelsConstants /\v<(default|high(er|est)|latest|random|diverse|rare|data(model|summary)|table)$>/
-
-" 7.3.0
-syn match   confDatamodels /\v<^(acceleration\.workload_pool)>/
-
-" 8.1.0
-syn match   confDatamodels /\v<^(acceleration\.source_guid|strict_fields)>/
-
-" 8.2
-syn match   confDatamodels /\v<^(acceleration\.(store|external\.max_interval_per_summarization_run))>/
-
-syn match   confDatamodelsConstants /\v<(splunk|external|orc|parquet)$>/
+syn match   confGlobalbannerConstants /\v<(green|blue|yellow|orange|red)$>/
 
 " Highlight definitions (generic)
 hi def link confComment Comment
@@ -82,6 +65,6 @@ hi def link confstanzaEnd Delimiter
 " Highlight for stanzas
 hi def link confStanza Function
 hi def link confGenericStanzas Constant
-hi def link confDatamodelsStanzas Identifier
-hi def link confDatamodels Keyword
-hi def link confDatamodelsConstants Constant
+hi def link confGlobalbannerStanzas Identifier
+hi def link confGlobalbanner Keyword
+hi def link confGlobalbannerConstants Constant

@@ -99,6 +99,36 @@ syn match   confInputsConstants /\v<(average|(max_)?count|dev|min|max|sqs|kinesi
 syn match   confInputs /\v<^(log_on_completion|useSSLCompression|use(WinApiProcStats|PDHFmtNoCap100)|run_introspection)>/
 syn match   confInputs /\v<^(remote_queue\.((sqs|kinesis)\.executor_max_workers_count|large_message_store\.supports_versioning))>/
 
+" 8.1.0
+syn match   confInputsStanzas contained /\v<(powershell(2)?|journald:\/\/[^\]]+|journald)>/
+
+syn match   confInputs /\v<^(python\.version|crossOriginSharingHeaders|evt_exclude_fields|(io|serialization)_threads|event_serialization_format)>/
+syn match   confInputs /\v<^(remote_queue.sqs_smartbus.((access|secret)_key|auth_region|endpoint|max_connections|message_group_id|retry_policy))>/
+syn match   confInputs /\v<^(remote_queue.sqs_smartbus.(max_count.max_retries_per_part|timeout.(connect|read|write|receive_message|visibility)))>/
+syn match   confInputs /\v<^(remote_queue.sqs_smartbus.(buffer.visibility|executor_max_workers_count|min_pending_messages|large_message_store.(endpoint|path)))>/
+syn match   confInputs /\v<^(remote_queue.sqs_smartbus.(dead_letter_queue.(name|process_interval)))>/
+
+syn match   confInputsConstants /\v<(default|python(2|3)?|kv|json|sqs_smartbus)$>/
+
+" 8.2
+syn match   confInputs /\v<^(remote_queue.sqs_smartbus.large_message_store.(encryption_scheme|kms_endpoint|key_(id|refresh_interval)))>/
+syn match   confInputs /\v<^(run_only_one)>/
+
+syn match   confInputsConstants /\v<(sse-(s3|c))>/
+
+" 9.0.0
+syn match   confInputs /\v<^(logCertificateData|certLog(MaxCacheEntries|RepeatFrequency)|sslServerHandshakeTimeout|nonmetric_counters)>/
+syn match   confInputs /\v<^(evt_skip_GUID_resolution)>/
+syn match   confInputs /\v<^(remote_queue.sqs.smartbus.(renew_retries))>/
+syn match   confInputs /\v<^(remote_queue.sqs.smartbus.(large_message_store\.(ssl(VerifyServerCert|Versions|(Alt|Common)NameToCheck|RootCAPath)|cipherSuite|ecdhCurves|dhFile)))>/
+
+" UF journalctl
+syn match   confInputs /\v<^(journalctl-(in|ex)clude-fields|journalctl-(filter|(user-)?unit|identifier|priority|boot|facility|grep))>/
+syn match   confInputs /\v<^(journalctl-(dmesg|quiet|freetext))>/
+
+syn match   confInputsConstants /\v<(__(MONOTONIC|(SOURCE_)?REALTIME)_TIMESTAMP|MESSAGE|PRIORITY|_SYSTEMD_(UNIT|CGROUP)|_TRANSPORT|_(P|U|G)ID)>/
+syn match   confInputsConstants /\v<(_MACHINE_ID|_COMM|_EXE|__CURSOR)>/
+
 " Splunk_TA_okta
 syn match   confInputs /\v<^(url|token|(start|end)_date|metrics|(page|batch)_size)>/
 

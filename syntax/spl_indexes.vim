@@ -68,10 +68,14 @@ syn match   confIndexes /\v<^(timePeriodInSecBeforeTsidxReduction|tsidx(Reductio
 syn match   confIndexes /\v<^(vix\.(command(\.arg\.\d+)?|env\.(HUNK_THIRDPARTY_JARS|env)|family|fs\.default\.name))>/
 syn match   confIndexes /\v<^(vix\.input\.\d+\.(accept|(e|l)t\.(format|offset|regex|timezone|value)|ignore|path|required\.fields))>/
 syn match   confIndexes /\v<^(vix\.(javaprops\.JVM|kerberos\.(keytab|principal)|mapred\.job\.tracker|mode|property|provider))>/
+syn match   confIndexes /\v<^(vix\.env\.(MAPREDUCE_USER|HADOOP_(HEAPSIZE|CLIENT_OPTS)))>/
+syn match   confIndexes /\v<^(vix\.mapred\.(job\.(reuse\.jvm\.num\.tasks|(map|reduce)\.memory\.mb|queue\.name)|child\.java\.opts|reduce\.tasks))>/
+syn match   confIndexes /\v<^(vix\.mapreduce\.(job\.(jvm\.numtasks|reduces|queuename)|(map|reduce)\.(java\.opts|memory\.mb)))>/
 syn match   confIndexes /\v<^(vix\.output\.buckets\.(from\.indexes|max\.network\.bandwidth|older\.than|path))>/
 syn match   confIndexes /\v<^(vix\.splunk\.(heartbeat(\.interval|\.path|\.threshold)?|home\.(datanode|hdfs)|impersonation|jars))>/
 syn match   confIndexes /\v<^(vix\.splunk\.search\.(column\.filter|debug|mixedmode(\.maxstream)?|mr\.mapper\.output\.(gzlevel|replication)))>/
 syn match   confIndexes /\v<^(vix\.splunk\.search\.(mr\.((max|min)splits|poll|splits\.multiplier|threads)|recordreader(\.avro\.regex|\.sequence\.ignore\.key)?))>/
+syn match   confIndexes /\v<^(vix\.splunk\.search\.recordreader\.((csv|sequence)\.regex))>/
 syn match   confIndexes /\v<^(vix\.splunk\.search\.splitter(\.hive\.(column(names|types)|dbname|fileformat(\.inputformat)?|ppd))?)>/
 syn match   confIndexes /\v<^(vix\.splunk\.search\.splitter\.hive\.rowformat\.(collectionitems\.terminated|escaped|(fields|lines|mapkeys)\.terminated))>/
 syn match   confIndexes /\v<^(vix\.splunk\.search\.splitter\.(hive\.(serde(\.properties)?|tablename)|parquet\.simplifyresult))>/
@@ -90,6 +94,40 @@ syn match   confIndexesConstants /\v<(mtime|current|max_count)$>/
 
 " 7.3.0
 syn match   confIndexes /\v<^(malformedEventIndex|maxGlobalRawDataSizeMB)>/
+
+" 8.1.0
+syn match   confIndexes /\v<^(fileSystemExecutorWorkers|hotBucketStreaming.extraBucketBuildingCmdlineArgs|python\.version)>/
+syn match   confIndexes /\v<^(metric\.(maxHotBuckets|splitByIndexKeys|enableFloatingPointCompression|compressionBlockSize|stubOutRawdataJournal|timestampResolution))>/
+syn match   confIndexes /\v<^((metric\.)?tsidxTargetSizeMB|waitPeriodInSecsForManifestWrite)>/
+syn match   confIndexes /\v<^(hotBucketStreaming\.(sendSlices|removeRemoteSlicesOnRoll|reportStatus|deleteHotsAfterRestart))>/
+syn match   confIndexes /\v<^(remote\.s3\.(url_version|bucket_name|encryption\.cse\.(algorithm|tmp_dir|key_(type|refresh_interval))|max_download_batch_size))>/
+syn match   confIndexes /\v<^(remote\.gs\.(credential_file|service_account_email|project_id|(upload|download)_chunk_size))>/
+syn match   confIndexes /\v<^(remote\.gs\.(max_(parallel_non_upload_threads|threads_per_parallel_upload|connection_pool_size|download_batch_size|count\.max_retries_per_part)))>/
+syn match   confIndexes /\v<^(remote\.gs\.(remove_all_versions|use_delimiter|retry_policy|backoff\.((initial|max)_delay_ms|scaling)))>/
+syn match   confIndexes /\v<^(remote\.gs\.(connectUsingIpVersion|sslVerifyServer(Cert|Name)|sslVersionsForClient|sslRootCAPath))>/
+syn match   confIndexes /\v<^(remote\.gs\.(cipherSuite|encryption(\.gcp-sse-c\.key_(type|refresh_interval))?))>/
+syn match   confIndexes /\v<^(remote\.gs\.(gcp_kms\.(locations|key(_ring)?)))>/
+syn match   confIndexes /\v<^(remote\.gs\.())>/
+syn match   confIndexes /\v<^(remote\.gs\.())>/
+syn match   confIndexes /\v<^(remote\.gs\.())>/
+syn match   confIndexes /\v<^()>/
+syn match   confIndexes /\v<^()>/
+syn match   confIndexesConstants /\v<(default|python(2|3)?|aes-256-gcm|4-only|6-only|ssl3|tls1.(0|1|2)|gcp-sse-(c|kms|gcp))$>/
+
+" 8.2
+syn match   confIndexes /\v<^(bucketMerge\.maxMergeTimeSpanSecs|tsidxDedupPostingsListMaxTermsLimit|hotBucketStreaming\.removeRemoteSlicesOnFreeze)>/
+syn match   confIndexes /\v<^(remote\.s3\.max_idle_connections|federated\.(provider|dataset))>/
+
+" 9.0.0
+syn match   confIndexes /\v<^(bucketMerge\.(min|max)MergeCount|deleteId|archiver\.selfStorage(DisableMPU|Encryption))>/
+syn match   confIndexes /\v<^(remote\.s3\.(tsidx_compression|use_sdk))>/
+syn match   confIndexes /\v<^(remote\.azure\.(sslVersions|sslVerifyServer(Cert|Name)|use_delimiter|httpKeepAlive|(access|secret)_key))>/
+syn match   confIndexes /\v<^(remote\.azure\.((tenant|client)_id|client_secret|sslRootCAPath|cipherSuite|encryption|endpoint))>/
+syn match   confIndexes /\v<^(remote\.azure\.(azure-sse-kv\.encryptionScope|supports_versioning|container_name|upload\.(chunk_size|concurrency)))>/
+syn match   confIndexes /\v<^(remote\.azure\.(download\.(chunk_size|concurrency)|max_(download_batch|listing_page)_size|retry_policy))>/
+syn match   confIndexes /\v<^(remote\.azure\.(max_count\.max_retries_in_total|backoff\.(initial|max_retry)_delay_ms))>/
+
+syn match   confIndexesConstants /\v<(azure-sse-(kv|ms)|cse|(m)?s)$>/
 
 " Highlight definitions (generic)
 hi def link confComment Comment

@@ -44,9 +44,16 @@ syn cluster confStanzas contains=confWorkLoadRulesStanzas,confGenericStanzas
 " workload_rules.conf
 syn match   confWorkLoadRulesStanzas contained /\v<(default|general|workload_rule:[^]]+|workload_rules_order)>/
 
-syn match   confWorkLoadRules /\v<^(predicate|workload_pool|rules|action|schedule|(end|start)_time|every_(week|month)_days)>/
+syn match   confWorkLoadRules /\v<^(predicate|workload_pool|rules|action|schedule|(end|start)_time|every_(week|month)_days|user_message)>/
 
 syn match   confWorkLoadRulesConstants /\v<(alert|move|abort|always_on|time_range|every_(day|week|month))$>/
+
+" 8.2
+syn match   confWorkLoadRules /\v<^(disabled)>/
+
+" 9.0.0
+syn match   confWorkLoadRulesStanzas contained /\v<(search_filter_rule:[^]]+)>/
+syn match   confWorkLoadRules /\v<^((start|end)_date)>/
 
 " Highlight definitions (generic)
 hi def link confComment Comment

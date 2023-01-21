@@ -48,8 +48,16 @@ syn match   confRestMap /\v<^(restReplay(Stanza)?|capability(\.(post|delete|get|
 syn match   confRestMap /\v<^(script(type|\.arg\.\d+|\.param)?|output_modes|pass(Conf|Http(Cookies|Headers)|Payload|Session|SystemAuth))>/
 syn match   confRestMap /\v<^(|driver(\.arg\.\d+|\.env\.[^\ |\=]+)?|showInDirSvc|desc|dynamic|path|untar|methods|destination|filternodes)>/
 syn match   confRestMap /\v<^(handler(actions|file|persistentmode|type)?|node(list)?s)>/
+syn match   confRestMap /\v<^(python\.version)>/
 
-syn match   confRestMapConstants /\v<()$>/
+syn match   confRestMapConstants /\v<(default|python(2|3)?)$>/
+
+" 8.2
+syn match   confRestMapConstants /\v<(base64)$>/
+
+" 9.0.0
+syn match   confRestMapStanzas contained /\v<(proxybundleupload(rshcluster)?:\k+)>/
+syn match   confRestMap /\v<^(stream)>/
 
 " Highlight definitions (generic)
 hi def link confComment Comment

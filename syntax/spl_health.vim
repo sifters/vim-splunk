@@ -42,7 +42,7 @@ syn region confStanza matchgroup=confStanzaStart start=/^\[/ matchgroup=confStan
 syn cluster confStanzas contains=confHealthStanzas,confGenericStanzas
 
 " health.conf
-syn match   confHealthStanzas contained /\v<(default|health_reporter|clustering|feature:*)>/
+syn match   confHealthStanzas contained /\v<(default|health_reporter|clustering|feature:\k+|alert_action:\k+)>/
 
 syn match   confHealth /\v<^(full_health_log_interval|suppress_status_update_ms|health_report_period|disabled|indicator:\S+:(yellow|red))>/
 
@@ -54,6 +54,19 @@ syn match   confHealthConstants /\v<(yellow|red)$>/
 
 " 8.0.0
 syn match   confHealthStanzas contained /\v<(distributed_health_reporter)>/
+
+" 8.1.0
+syn match   confHealthStanzas contained /\v<(tree_view:health_subset)>/
+syn match   confHealth /\v<^(indicator:\S+:indicator|tree_view:health_subset)>/
+syn match   confHealthConstants /\v<(enabled|disabled)$>/
+
+" 8.2
+syn match   confHealth /\v<^(latency_tracker_log_interval_sec|aggregate_ingestion_latency_health)>/
+
+" 9.0.0
+syn match   confHealth /\v<^(latency_tracker_log_interval|ingestion_latency_send_interval(_max)?|snooze_end_time|friendly_description)>/
+syn match   confHealth /\v<^(indicator:\S+:friendly_description)>/
+syn match   confHealth /\v<^()>/
 
 " Highlight definitions (generic)
 hi def link confComment Comment

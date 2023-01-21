@@ -61,7 +61,7 @@ syn match   confServer /\v<^(commit_retry_time|components|compressed|conf_deploy
 syn match   confServer /\v<^(conf_replication_(include\.[^\ |\=]+|max_(json_value_size|pu(ll|sh)_count)|period|purge\.(eligibile_(age|count)|period)))>/
 syn match   confServer /\v<^(conf_replication_summary\.((black|white)list\.[^\ |\=]+|concerning_file_size|period))>/
 syn match   confServer /\v<^(connect(UsingIpVersion|ion_timeout)|cookieAuth(HttpOnly|Secure)|crossOriginSharingPolicy|csv_journal_rows_per_hb|cxn_timeout(_raft)?)>/
-syn match   confServer /\v<^(dbPath|decommission_(force_finish_idle_time|search_jobs_wait_secs)|dedicatedIoThreads|defaultHTTPServerCompressionLevel)>/
+syn match   confServer /\v<^(dbPath|decommission_(force_finish_idle_time|search_jobs_(min_wait_ratio|wait_secs))|dedicatedIoThreads|defaultHTTPServerCompressionLevel)>/
 syn match   confServer /\v<^(description|detailsUrl|dh(F|f)ile|disable(d|DefaultPort)|ecdhCurve(s|Name)|election(_timeout_(ms|2_hb_ratio))?)>/
 syn match   confServer /\v<^(embedSecret|enable(S2SHeartbeat|SplunkdSSL|_jobs_data_lite)|encrypt_fields|etc_filesize_limit|eviction_policy|(local_)?executor_workers)>/
 syn match   confServer /\v<^(follow-symlinks|forceHttp10|forwarder_site_failover|generation_poll_interval|guid|hangup_after_phonehome|heartbeat_(period|timeout))>/
@@ -132,7 +132,54 @@ syn match   confServer /\v<^(dfc_ip_address|extra_kryo_registered_classes|spark_
 syn match   confServer /\v<^(persist(_pending_upload_from_external|ent_id_set_remove_min_sync_secs)|enable_open_on_stale_object)>/
 syn match   confServer /\v<^(batchStacksThreshold)>/
 
-syn match   confServerConstants /\v<(clustermaster:\S+)$>/
+syn match   confServerConstants /\v<(cluster(manager|master):\S+)$>/
+
+" 8.1.0
+syn match   confServerStanzas contained /\v<(cascading_replication|cache_manager_service|hot_bucket_streaming)>/
+
+syn match   confServer /\v<^(pass4SymmKey_minLength|pipelineSetChannelSetCacheSize|numThreadsForIndexInitExecutor|numThreadsForIndexInitExecutor)>/
+syn match   confServer /\v<^(python\.version|roll_and_wait_for_uploads_at_shutdown_secs|crossOriginSharingHeaders|freeze_during_maintenance)>/
+syn match   confServer /\v<^(dedicatedIoThreads(SelectionPolicy|WeightsUpdatePeriod)|license_warnings_update_interval|assign_primaries_to_all_sites)>/
+syn match   confServer /\v<^(service_execution_threshold_ms|deferred_rest_api_update|max_delayed_updates_time_ms|commit_generation_execution_limit_ms)>/
+syn match   confServer /\v<^(rolling_restart_condition|streaming_replication_wait_secs|rebalance_primaries_execution_limit(_ms)?)>/
+syn match   confServer /\v<^(bucketsize_mismatch_strategy|report_remote_storage_bucket_upload_to_targets|recreate_bucket_max_per_service)>/
+syn match   confServer /\v<^(max_(peer_batch_rep_load|concurrent_peers_joining)|enable_(parallel_add_peer|primary_fixup_during_maintenance))>/
+syn match   confServer /\v<^(log_bucket_during_addpeer|notify_buckets_period|warm_bucket_replication_pre_upload|bucketsize_upload_preference|upload_rectifier_timeout_secs)>/
+syn match   confServer /\v<^(collectLocalIndexes|deployerPushThreads|storageEngine(Migration)?|clientConnection(Timeout|PoolSize)|clientSocketTimeout)>/
+syn match   confServer /\v<^(initialSyncMaxFetcherRestarts|delayShutdownOnBackupRestoreInProgress|percRAMForCache|local_delete_summary_metadata_ttl)>/
+syn match   confServer /\v<^(max_replication_(threads|jobs)|cascade_replication_plan_(age|fanout|reap_interval|topology|select_policy))>/
+syn match   confServer /\v<^(evict_on_stable|max_file_exists_retry_count|access_logging|cache_usage_collection_(interval_minutes|time_bins|per_index))>/
+syn match   confServer /\v<^(batch_registration(_size)?|ping_enabled|timeout\.(ping|connect|read|write)|upload_archive_format)>/
+syn match   confServer /\v<^(slices_list_executor_workers|slices_(download|build|removal|upload)_executor_workers)>/
+syn match   confServer /\v<^(slices_upload_executor_capacity|slices_upload_send_interval|slices_upload_size_threshold)>/
+syn match   confServer /\v<^()>/
+
+syn match   confServerConstants /\v<(python(2|3)?|force_python3|weighted_random|round_robin|up|batch_adding|starting)$>/
+syn match   confServerConstants /\v<(smallest|largest|mmapv1|wiredTiger|size_balanced|random|none|tar\.lz4)$>/
+
+" 8.2
+syn match   confServer /\v<^(preShutdownCleanup|reset_manifests_on_startup|percent_manifests_to_reset|regex_cache_hiwater)>/
+syn match   confServer /\v<^(allowWwwAuthHeader|cookieSameSiteSecure|imds_version|manager_uri)>/
+syn match   confServer /\v<^(primary_src_persist_secs|searchable_rolling_(peer_state_delay_interval|site_down_policy))>/
+syn match   confServer /\v<^(percent_peers_to_reload|precompress_cluster_bundle|precompress_artifacts)>/
+syn match   confServer /\v<^(conf_deploy_precompress_bundles|cache_upload_backoff_sleep_secs|max_known_remote_absent_summaries)>/
+syn match   confServer /\v<^(usePreloadedPstacks|scsTokenScriptPath)>/
+
+syn match   confServerConstants /\v<((fullyqualified|cluster|short)name|track-only|v(1|2|4)|peer|manager|most|half)$>/
+
+syn match   confServerStanzas contained /\v<(imds|clustermanager:\S+|federated_search|distributed_leases)>/
+
+" 9.0.0
+syn match   confServerStanzas contained /\v<(config_change_tracker|pythonSslClientConfig|search_state|manager_pages)>/
+
+syn match   confServer /\v<^(denylist|log_throttling_(disabled|threshold_ms)|exclude_fields|sslVerifyServerName)>/
+syn match   confServer /\v<^(certificateStatusValidationMethod|cliVerifyServerName|peers|manager_switchover_(mode|quiet_period))>/
+syn match   confServer /\v<^(cm_(heartbeat_period|max_hbmiss_count|com_timeout)|ack_factor|captain_dump_service_periods)>/
+syn match   confServer /\v<^(conf_replication_summary.(in|ex)cludelist.\k+|remote_job_retry_attempts|remote.s3.kms.ssl\k+)>/
+syn match   confServer /\v<^(slices_upload_retry_pending|transparent_mode|whole_search_execution_optimization|(sends|receives)DeltaBundle)>/
+syn match   confServer /\v<^(syncProxyBundleToClusterMembers|(alert|suppression)_store|sanitize_uri_param)>/
+
+syn match   confServerConstants /\v<(crl|manual)$>/
 
 " Highlight definitions (generic)
 hi def link confComment Comment
