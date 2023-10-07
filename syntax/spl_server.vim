@@ -178,8 +178,18 @@ syn match   confServer /\v<^(cm_(heartbeat_period|max_hbmiss_count|com_timeout)|
 syn match   confServer /\v<^(conf_replication_summary.(in|ex)cludelist.\k+|remote_job_retry_attempts|remote.s3.kms.ssl\k+)>/
 syn match   confServer /\v<^(slices_upload_retry_pending|transparent_mode|whole_search_execution_optimization|(sends|receives)DeltaBundle)>/
 syn match   confServer /\v<^(syncProxyBundleToClusterMembers|(alert|suppression)_store|sanitize_uri_param)>/
+syn match   confServer /\v<^(invalidateSessionTokensOnLogout|logoutCacheRefreshInterval|enable_encrypt_bundle)>/
+syn match   confServer /\v<^(remote\.s3\.header\.(POST|GET)\.\k+)>/
 
 syn match   confServerConstants /\v<(crl|manual)$>/
+
+" 9.1.0
+syn match   confServer /\v<^(enable_search_process_long_lifespan|conf_generation_include\.\k+|mgmtMode)>/
+syn match   confServer /\v<^(lm_(uri|ping_interval)|generation_max_staleness|localization_(based_primary_selection|update_batch_size))>/
+syn match   confServer /\v<^(allow_concurrent_dispatch_savedsearch)>/
+syn match   confServer /\v<^()>/
+
+syn match   confServerConstants /\v<(tcp)$>/
 
 " Highlight definitions (generic)
 hi def link confComment Comment

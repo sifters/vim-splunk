@@ -41,10 +41,19 @@ syn region confStanza matchgroup=confStanzaStart start=/^\[/ matchgroup=confStan
 " Group clusters
 syn cluster confStanzas contains=confWebFeaturesStanzas,confGenericStanzas
 
-" web.conf
+" web-features.conf
 syn match   confWebFeaturesStanzas contained /\v<(feature:(quarantine_files|dashboard_inputs_localization))>/
 
 syn match   confWebFeatures /\v<^(enable_(jQuery2|unsupported_hotlinked_imports|dashboard_inputs_localization))>/
+
+" 9.1.0
+syn match   confWebFeaturesStanzas contained /\v<(feature:(search_(v2_endpoint|auto_format)|dashboard(s_csp|_studio)))>/
+syn match   confWebFeaturesStanzas contained /\v<(feature:(highcharts_accessibility|windows_rce|page_migration|share_job|ui_prefs_optimizations))>/
+
+syn match   confWebFeatures /\v<^(enable_(search_v2_endpoint|dashboards_(external_content|redirection)_restriction|inputs_on_canvas|show_hide|events_viz))>/
+syn match   confWebFeatures /\v<^(enable_(acuif_pages|(home|triggered_alerts)_vnext|share_job_control|autoformatted_comments))>/
+syn match   confWebFeatures /\v<^((internal\.)?dashboards_trusted_domain\.\k+|disable_highcharts_accessibility|optimize_ui_prefs_performance)>/
+syn match   confWebFeatures /\v<^()>/
 
 " Highlight definitions (generic)
 hi def link confComment Comment
